@@ -10,6 +10,10 @@ Currently that includes:
 
 You should probably install this extension from the Zed marketplace.
 
+| kosh lsp in action. |
+| - |
+| <img src="assets/screenshot.png" width=99%/> |
+
 ### Manual install
 
 Install the WebAssembly target:
