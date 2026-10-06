@@ -6,6 +6,11 @@ schema_version = 1
 authors = ["toiletbril"]
 repository = "https://github.com/fennec-support/kosh-zed"
 
+[[capabilities]]
+kind = "process:exec"
+command = "*"
+args = ["--version"]
+
 [language_servers.kosh]
 name = "kosh"
 languages = [

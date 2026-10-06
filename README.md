@@ -58,6 +58,10 @@ Finding the shell:
 }
 ```
 
+Once per session the extension compares the version printed by `kosh --version`
+with the newest release. It updates only the shell it downloaded itself, and
+logs a note when a shell from `binary.path` or PATH is older.
+
 The extension appends `--as-language-server` if the `binary.arguments` omits it.
 
 `kosh --format` can format a file without the language server.
