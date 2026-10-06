@@ -1,14 +1,16 @@
 # Koshka for Zed
 
-This extension runs the Koshka language server and formatter, which are part
-of the `kosh` binary. It uses the `binary.path` setting, then `kosh` on your
-PATH, and otherwise downloads the latest release of
-[fennec-support/kosh](https://github.com/fennec-support/kosh).
+This repository hosts [Koshka Shell](https://github.com/fennec-support/kosh)
+tooling for Zed.
 
-The extension bundles no tree-sitter grammar. It attaches the server to
-languages Zed already provides.
+Currently that includes:
+- Linter
+- LSP/Symbols
+- Formatter
 
-## Installing
+You should probably install this extension from the Zed marketplace.
+
+### Manual install
 
 Install the WebAssembly target:
 
@@ -19,7 +21,7 @@ rustup target add wasm32-wasip2
 Then open the command palette, run `zed: install dev extension`, and select
 this directory. Zed builds and reloads the extension.
 
-## Settings
+### Settings
 
 ```jsonc
 {
@@ -30,7 +32,7 @@ this directory. Zed builds and reloads the extension.
     "Shell Script": {
       "language_servers": ["kosh", "..."],
       "formatter": { "language_server": { "name": "kosh" } },
-      "format_on_save": "on"
+      "format_on_save": "off"
     },
     "YAML": { "language_servers": ["kosh", "..."] },
     "Markdown": { "language_servers": ["kosh", "..."] },
@@ -42,19 +44,6 @@ this directory. Zed builds and reloads the extension.
   }
 }
 ```
-
-The `file_types` block gives `.kosh` and `.shit` files the built-in Shell
-Script language, which the server attaches to.
-
-The `"..."` entry keeps the other servers registered for the language. A list
-without it replaces the defaults. Write `"!bash-language-server"` to drop a
-server you do not want.
-
-Keep `format_on_save` at `on`. The server formats only whole documents, so the
-`modifications` mode skips the file without an error.
-
-The bare `"language_server"` value picks the first attached server that can
-format. The named form selects `kosh` once a second server is attached.
 
 ## Finding the shell
 
@@ -70,8 +59,7 @@ format. The named form selects `kosh` once a second server is attached.
 }
 ```
 
-The extension appends `--as-language-server` when `binary.arguments` lacks it,
-so a setting that lists other arguments still starts the server.
+The extension appends `--as-language-server` when `binary.arguments` lacks it.
 
 ## The command line formatter
 
@@ -92,6 +80,5 @@ so a setting that lists other arguments still starts the server.
 }
 ```
 
-Zed writes the buffer to standard input without a file name, so `kosh` reads
-every buffer as a plain shell script. Configure this for shell languages only,
-or a YAML or Markdown buffer is rewritten as shell.
+Zed writes the buffer to standard input without a file name, and `kosh` reads
+every buffer as a plain shell script. Configure this for shell languages only.

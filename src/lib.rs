@@ -1,3 +1,13 @@
+/*
+ *    This file is a part of the Koshka shell, (c) toiletbril, 2026
+ *    See the top-level LICENSE file for the licensing information.
+ *
+ * This file starts the Koshka language server for Zed. It resolves the kosh
+ * binary from the binary.path setting, then PATH, then the newest
+ * fennec-support/kosh release, and appends --as-language-server when the
+ * configured arguments lack it.
+ */
+
 use zed_extension_api::{
     self as zed, settings::LspSettings, Architecture, Command, DownloadedFileType,
     GithubReleaseOptions, LanguageServerId, LanguageServerInstallationStatus, Os, Result, Worktree,
