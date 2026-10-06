@@ -1,4 +1,4 @@
-# Koshka for Zed
+# koshka for Zed
 
 This repository hosts [Koshka Shell](https://github.com/fennec-support/kosh)
 tooling for Zed.
@@ -45,8 +45,7 @@ this directory. Zed builds and reloads the extension.
 }
 ```
 
-## Finding the shell
-
+Finding the shell:
 ```jsonc
 {
   "lsp": {
@@ -59,11 +58,9 @@ this directory. Zed builds and reloads the extension.
 }
 ```
 
-The extension appends `--as-language-server` when `binary.arguments` lacks it.
+The extension appends `--as-language-server` if the `binary.arguments` omits it.
 
-## The command line formatter
-
-`kosh --format` formats a file without the language server.
+`kosh --format` can format a file without the language server.
 
 ```jsonc
 {
@@ -80,5 +77,5 @@ The extension appends `--as-language-server` when `binary.arguments` lacks it.
 }
 ```
 
-Zed writes the buffer to standard input without a file name, and `kosh` reads
+Zed writes the buffer to standard input without a filename and `kosh` treats
 every buffer as a plain shell script. Configure this for shell languages only.
